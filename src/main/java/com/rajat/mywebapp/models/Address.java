@@ -1,6 +1,19 @@
 package com.rajat.mywebapp.models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "address")
 public class Address {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String adressLine1;
 	private String addressLine2;
@@ -8,62 +21,8 @@ public class Address {
 	private int pincode;
 	private boolean isPrimaryAddress;
 	private String country;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "customer_fk")
 	private Customer customer;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getAdressLine1() {
-		return adressLine1;
-	}
-
-	public void setAdressLine1(String adressLine) {
-		this.adressLine1 = adressLine;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getPincode() {
-		return pincode;
-	}
-
-	public void setPincode(int pincode) {
-		this.pincode = pincode;
-	}
-
-	public String getAddressLine2() {
-		return addressLine2;
-	}
-
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
-
-	public boolean isPrimaryAddress() {
-		return isPrimaryAddress;
-	}
-
-	public void setPrimaryAddress(boolean isPrimaryAddress) {
-		this.isPrimaryAddress = isPrimaryAddress;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
 }
