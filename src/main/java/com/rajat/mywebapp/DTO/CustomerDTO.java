@@ -52,14 +52,45 @@ public class CustomerDTO {
         this.addresses = addresses;
     }
 
+    //Method to write details of new customer
     public Customer writeToNewCustomer() {
-         Customer customer = new Customer();
-        if(getFirstName() != null ){customer.setFirstName(firstName);}
-        if(getLastName() != null){customer.setLastName(lastName);}
-        customer.setAge(age);
-        customer.setOrders(orders);
-        customer.setAddresses(addresses);
+        Customer customer = new Customer();
+
+        if (this.getFirstName() != null) {
+            customer.setFirstName(firstName);
+        }
+        if (this.getLastName() != null) {
+            customer.setLastName(lastName);
+        }
+        if (this.getAge() > 0) {
+            customer.setAge(age);
+        }
+        if (this.getOrders() > 0) {
+            customer.setOrders(orders);
+        }
+        if (this.getAddresses() != null) {
+            customer.setAddresses(addresses);
+        }
         return customer;
 
+    }
+
+    // Method to update the details of existing customer
+    public void updateExistingCustomer(Customer customerToUpdate) {
+        if (this.getFirstName() != null) {
+            customerToUpdate.setFirstName(this.getFirstName());
+        }
+        if (this.getLastName() != null) {
+            customerToUpdate.setLastName(this.getLastName());
+        }
+        if (this.getAge() > 0) {
+            customerToUpdate.setAge(this.getAge());
+        }
+        if (this.getOrders() > 0) {
+            customerToUpdate.setOrders(this.getOrders());
+        }
+        if (this.getAddresses() != null) {
+            customerToUpdate.setAddresses(this.getAddresses());
+        }
     }
 }
