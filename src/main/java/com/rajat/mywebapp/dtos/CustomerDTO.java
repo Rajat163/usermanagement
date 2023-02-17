@@ -1,16 +1,20 @@
-package com.rajat.mywebapp.DTO;
+package com.rajat.mywebapp.dtos;
 
 import java.util.List;
 
-import com.rajat.mywebapp.models.Address;
+import com.rajat.mywebapp.controllers.AddressController;
 import com.rajat.mywebapp.models.Customer;
+import com.rajat.mywebapp.utils.AddressUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerDTO {
+    @Autowired
+    AddressUtil util;
     private String firstName;
     private String lastName;
     private int age;
     private int orders;
-    private List<Address> addresses;
+    private List<AddressDTO> addresses;
 
     public String getFirstName() {
         return firstName;
@@ -44,11 +48,11 @@ public class CustomerDTO {
         this.orders = orders;
     }
 
-    public List<Address> getAddresses() {
+    public List<AddressDTO> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(List<AddressDTO> addresses) {
         this.addresses = addresses;
     }
 
@@ -69,7 +73,9 @@ public class CustomerDTO {
             customer.setOrders(orders);
         }
         if (this.getAddresses() != null) {
-            customer.setAddresses(addresses);
+            for (AddressDTO address : addresses) {
+                util.addNewAddress(address);
+            }
         }
         return customer;
 
@@ -88,9 +94,6 @@ public class CustomerDTO {
         }
         if (this.getOrders() > 0) {
             customerToUpdate.setOrders(this.getOrders());
-        }
-        if (this.getAddresses() != null) {
-            customerToUpdate.setAddresses(this.getAddresses());
         }
     }
 }

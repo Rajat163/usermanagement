@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rajat.mywebapp.DTO.CustomerDTO;
+import com.rajat.mywebapp.dtos.CustomerDTO;
 import com.rajat.mywebapp.models.Customer;
 import com.rajat.mywebapp.repos.CustomerRepo;
 
