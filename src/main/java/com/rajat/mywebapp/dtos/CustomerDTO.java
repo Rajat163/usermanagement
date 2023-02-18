@@ -2,14 +2,10 @@ package com.rajat.mywebapp.dtos;
 
 import java.util.List;
 
-import com.rajat.mywebapp.controllers.AddressController;
 import com.rajat.mywebapp.models.Customer;
-import com.rajat.mywebapp.utils.AddressUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerDTO {
-    @Autowired
-    AddressUtil util;
     private String firstName;
     private String lastName;
     private int age;
@@ -74,7 +70,7 @@ public class CustomerDTO {
         }
         if (this.getAddresses() != null) {
             for (AddressDTO address : addresses) {
-                util.addNewAddress(address);
+
             }
         }
         return customer;

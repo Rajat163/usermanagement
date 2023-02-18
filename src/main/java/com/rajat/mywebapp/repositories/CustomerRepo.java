@@ -1,4 +1,4 @@
-package com.rajat.mywebapp.repos;
+package com.rajat.mywebapp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
