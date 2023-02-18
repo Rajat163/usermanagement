@@ -58,26 +58,4 @@ public class AddressDTO {
         this.country = country;
     }
 
-    public Address writeToNewAddress() {
-        Address address = new Address();
-        if (this.getAddressLine1() != null) {
-            address.setAddressLine1(this.getAddressLine1());
-        }
-        if (this.getAddressLine2() != null) {
-            address.setAddressLine2(this.getAddressLine2());
-        }
-        if (this.getCity() != null) {
-            address.setCity(this.getCity());
-        }
-        if (this.getPincode() > 0) {
-            address.setPincode(this.getPincode());
-        }
-
-        address.setPrimaryAddress(this.isPrimaryAddress);
-
-        if (this.country != null) {
-            address.setCountry(this.country);
-        }
-        return address;
-    }
 }
