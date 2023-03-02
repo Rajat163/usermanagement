@@ -1,6 +1,6 @@
 package com.rajat.mywebapp.service.interfaces;
 
-import com.rajat.mywebapp.models.entities.dtos.CustomerDTO;
+import com.rajat.mywebapp.models.dtos.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

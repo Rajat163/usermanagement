@@ -1,6 +1,6 @@
 package com.rajat.mywebapp.service.impl;
 
-import com.rajat.mywebapp.models.entities.dtos.AddressDTO;
+import com.rajat.mywebapp.models.dtos.AddressDTO;
 import com.rajat.mywebapp.service.interfaces.AddressService;
 import org.springframework.stereotype.Service;
 

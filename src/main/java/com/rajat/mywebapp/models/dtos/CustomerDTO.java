@@ -1,4 +1,4 @@
-package com.rajat.mywebapp.models.entities.dtos;
+package com.rajat.mywebapp.models.dtos;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.rajat.mywebapp.service.impl;
 
-import com.rajat.mywebapp.models.entities.dtos.CustomerDTO;
+import com.rajat.mywebapp.models.dtos.CustomerDTO;
 import com.rajat.mywebapp.models.entities.Customer;
 import com.rajat.mywebapp.repositories.CustomerRepo;
 import com.rajat.mywebapp.service.interfaces.CustomerService;

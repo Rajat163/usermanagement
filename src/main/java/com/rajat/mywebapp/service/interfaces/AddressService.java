@@ -1,6 +1,6 @@
 package com.rajat.mywebapp.service.interfaces;
 
-import com.rajat.mywebapp.models.entities.dtos.AddressDTO;
+import com.rajat.mywebapp.models.dtos.AddressDTO;
 
 public interface AddressService {
     public abstract void addNewAddress(AddressDTO dto);
