@@ -1,8 +1,10 @@
 package com.rajat.mywebapp.service.impl;
 
-import com.rajat.mywebapp.dtos.AddressDTO;
+import com.rajat.mywebapp.models.entities.dtos.AddressDTO;
 import com.rajat.mywebapp.service.interfaces.AddressService;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AddressServiceImpl implements AddressService {
     @Override
     public void addNewAddress(AddressDTO dto) {

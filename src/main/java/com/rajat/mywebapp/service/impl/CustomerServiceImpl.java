@@ -1,7 +1,7 @@
 package com.rajat.mywebapp.service.impl;
 
-import com.rajat.mywebapp.dtos.CustomerDTO;
-import com.rajat.mywebapp.models.Customer;
+import com.rajat.mywebapp.models.entities.dtos.CustomerDTO;
+import com.rajat.mywebapp.models.entities.Customer;
 import com.rajat.mywebapp.repositories.CustomerRepo;
 import com.rajat.mywebapp.service.interfaces.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;

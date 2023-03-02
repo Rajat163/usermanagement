@@ -1,4 +1,4 @@
-package com.rajat.mywebapp.models;
+package com.rajat.mywebapp.models.entities;
 
 import java.util.List;
 

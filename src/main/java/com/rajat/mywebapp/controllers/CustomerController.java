@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.rajat.mywebapp.dtos.CustomerDTO;
+import com.rajat.mywebapp.models.entities.dtos.CustomerDTO;
 
 
 @RestController

@@ -1,9 +1,6 @@
-package com.rajat.mywebapp.dtos;
+package com.rajat.mywebapp.models.entities.dtos;
 
 import java.util.List;
-
-import com.rajat.mywebapp.models.Customer;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerDTO {
     private String firstName;

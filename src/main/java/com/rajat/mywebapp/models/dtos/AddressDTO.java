@@ -1,6 +1,4 @@
-package com.rajat.mywebapp.dtos;
-
-import com.rajat.mywebapp.models.Address;
+package com.rajat.mywebapp.models.entities.dtos;
 
 public class AddressDTO {
     private String addressLine1;

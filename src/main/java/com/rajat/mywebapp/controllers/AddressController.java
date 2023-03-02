@@ -1,6 +1,6 @@
 package com.rajat.mywebapp.controllers;
 
-import com.rajat.mywebapp.dtos.AddressDTO;
+import com.rajat.mywebapp.models.entities.dtos.AddressDTO;
 import com.rajat.mywebapp.service.impl.AddressServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
