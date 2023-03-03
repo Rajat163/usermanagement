@@ -16,7 +16,7 @@ public class Address {
 	private boolean isPrimaryAddress;
 	private String country;
 	@OneToOne
-	@JoinColumn(name = "customer")
+	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
 	public int getId() {

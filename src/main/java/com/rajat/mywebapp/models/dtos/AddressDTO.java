@@ -7,6 +7,7 @@ public class AddressDTO {
     private int pincode;
     private boolean isPrimaryAddress;
     private String country;
+    private CustomerDTO customerDTO;
 
     public String getAddressLine1() {
         return addressLine1;
@@ -56,4 +57,11 @@ public class AddressDTO {
         this.country = country;
     }
 
+    public CustomerDTO getCustomerDTO() {
+        return customerDTO;
+    }
+
+    public void setCustomerDTO(CustomerDTO customerDTO) {
+        this.customerDTO = customerDTO;
+    }
 }

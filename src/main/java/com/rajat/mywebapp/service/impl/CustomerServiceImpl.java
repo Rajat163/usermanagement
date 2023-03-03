@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addNewCustomer(CustomerDTO dto) {
-        Customer customer = new Customer();
+      /*  Customer customer = new Customer();
 
         if (dto.getFirstName() != null) {
             customer.setFirstName(dto.getFirstName());
@@ -43,6 +43,10 @@ public class CustomerServiceImpl implements CustomerService {
             });
         }
         repo.save(customer);
+       */
+
+        //Logic to setCustomerDTO for every addressDTO
+        // Use Model Mapper to map the Customer DTO from frontend to Customer Table.
     }
 
 
