@@ -1,16 +1,13 @@
 package com.rajat.mywebapp.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "address")
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "add_id")
 	private int id;
 	private String addressLine1;
 	private String addressLine2;
@@ -18,7 +15,9 @@ public class Address {
 	private int pincode;
 	private boolean isPrimaryAddress;
 	private String country;
-
+	@OneToOne
+	@JoinColumn(name = "customer")
+	private Customer customer;
 
 	public int getId() {
 		return id;
@@ -76,5 +75,11 @@ public class Address {
 		this.country = country;
 	}
 
-	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 }

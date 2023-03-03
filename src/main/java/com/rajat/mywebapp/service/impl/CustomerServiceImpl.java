@@ -17,6 +17,8 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepo repo;
     @Autowired
     private ModelMapper mapper;
+    @Autowired
+    private AddressServiceImpl addressService;
 
     @Override
     public void addNewCustomer(CustomerDTO dto) {
@@ -33,6 +35,12 @@ public class CustomerServiceImpl implements CustomerService {
         }
         if (dto.getOrders() > 0) {
             customer.setOrders(dto.getOrders());
+        }
+
+        if (dto.getAddresses() != null) {
+            dto.getAddresses().forEach(addressDTO -> {
+                addressService.addNewAddress(addressDTO);
+            });
         }
         repo.save(customer);
     }
