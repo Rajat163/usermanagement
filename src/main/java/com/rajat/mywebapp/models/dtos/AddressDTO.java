@@ -1,5 +1,8 @@
 package com.rajat.mywebapp.models.dtos;
 
+import lombok.Data;
+
+@Data
 public class AddressDTO {
     private String addressLine1;
     private String addressLine2;

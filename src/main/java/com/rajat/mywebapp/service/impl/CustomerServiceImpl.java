@@ -1,5 +1,6 @@
 package com.rajat.mywebapp.service.impl;
 
+import com.rajat.mywebapp.models.dtos.AddressDTO;
 import com.rajat.mywebapp.models.dtos.CustomerDTO;
 import com.rajat.mywebapp.models.entities.Customer;
 import com.rajat.mywebapp.repositories.CustomerRepo;
@@ -22,31 +23,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addNewCustomer(CustomerDTO dto) {
-      /*  Customer customer = new Customer();
-
-        if (dto.getFirstName() != null) {
-            customer.setFirstName(dto.getFirstName());
-        }
-        if (dto.getLastName() != null) {
-            customer.setLastName(dto.getLastName());
-        }
-        if (dto.getAge() > 0) {
-            customer.setAge(dto.getAge());
-        }
-        if (dto.getOrders() > 0) {
-            customer.setOrders(dto.getOrders());
-        }
-
+        Customer customer = repo.save(mapper.map(dto, Customer.class));
         if (dto.getAddresses() != null) {
             dto.getAddresses().forEach(addressDTO -> {
-                addressService.addNewAddress(addressDTO);
+                addressService.addNewAddress(addressDTO,customer);
             });
         }
-        repo.save(customer);
-       */
 
-        //Logic to setCustomerDTO for every addressDTO
-        // Use Model Mapper to map the Customer DTO from frontend to Customer Table.
     }
 
 

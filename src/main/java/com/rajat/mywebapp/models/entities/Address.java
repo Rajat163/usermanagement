@@ -1,9 +1,11 @@
 package com.rajat.mywebapp.models.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
 @Table(name = "address")
+@Data
 public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +17,7 @@ public class Address {
 	private int pincode;
 	private boolean isPrimaryAddress;
 	private String country;
-	@OneToOne
+	@ManyToOne()
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 

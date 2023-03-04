@@ -4,12 +4,13 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
+import lombok.Data;
 
 @Transactional
 @Entity
 @Table(name = "customer")
+@Data
 public class Customer {
-	@Column(name = "cust_id")
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -17,6 +18,8 @@ public class Customer {
 	private String lastName;
 	private int age;
 	private int orders;
+	@OneToMany(mappedBy = "customer")
+	private List<Address> addresses;
 
 	public int getId() {
 		return id;
@@ -58,20 +61,11 @@ public class Customer {
 		this.orders = orders;
 	}
 
-	/*public List<Address> getAddresses() {
+	public List<Address> getAddresses() {
 		return addresses;
 	}
 
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
-*/
-/*
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
-	}*/
 }

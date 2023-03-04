@@ -1,7 +1,9 @@
 package com.rajat.mywebapp.models.dtos;
 
+import lombok.Data;
 import java.util.List;
 
+@Data
 public class CustomerDTO {
     private String firstName;
     private String lastName;
