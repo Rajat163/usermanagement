@@ -49,7 +49,7 @@ public class AddressDTO {
     }
 
     public void setPrimaryAddress(boolean primaryAddress) {
-        isPrimaryAddress = primaryAddress;
+        this.isPrimaryAddress = primaryAddress;
     }
 
     public String getCountry() {

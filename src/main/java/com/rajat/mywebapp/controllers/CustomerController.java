@@ -6,41 +6,34 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.rajat.mywebapp.models.dtos.CustomerDTO;
 
 
 @RestController
+@RequestMapping("customers")
 public class CustomerController {
     @Autowired
     CustomerServiceImpl service;
     Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
-    @PostMapping("/createCustomer")
+    @PostMapping()
     public String addCustomer(@RequestBody @NotNull CustomerDTO dto) {
         service.addNewCustomer(dto);
         return "customer added successfully...";
     }
-
-    @GetMapping("/getAllCustomers")
-    public List<CustomerDTO> getAll() {
+    @PutMapping()
+    public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String custId) {
+        service.updateCustomer(custId, dto);
+        return getCustomer(custId);
+    }
+    @GetMapping()
+    public List<CustomerDTO> getAllCustomers() {
         return service.getAllCustomers();
     }
 
-    @GetMapping("/getCustomer/{custId}")
-    public CustomerDTO getCustomer(@PathVariable String custId) {
-        CustomerDTO customer = service.getCustomerByID(custId);
-        return customer;
-    }
-
-    @PutMapping("/updateCustomer/{custId}")
-    public CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String custId) {
-        CustomerDTO customer = service.updateCustomer(custId, dto);
-        return customer;
+    @RequestMapping(params = "custId",method = RequestMethod.GET)
+    public CustomerDTO getCustomer(@RequestParam String custId){
+        return service.getCustomerByID(custId);
     }
 }

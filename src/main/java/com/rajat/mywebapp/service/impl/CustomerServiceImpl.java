@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -40,7 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomerByID(String custID) {
-        return null;
+        Optional<Customer> customer = repo.findById(Integer.parseInt(custID));
+        CustomerDTO dto = mapper.map(customer, CustomerDTO.class);
+        return dto;
     }
 
     @Override
@@ -55,8 +58,14 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO updateCustomer(String custId, CustomerDTO dto) {
-        return null;
+    public String updateCustomer(String custId, CustomerDTO dto) {
+        Optional<Customer> customer = repo.findById(Integer.parseInt(custId));
+        String result = "failed";
+        if (customer != null) {
+          repo.save(mapper.map(dto, Customer.class));
+          result = "Customer Updated Successfully.....";
+        }
+        return result;
     }
 
 }
