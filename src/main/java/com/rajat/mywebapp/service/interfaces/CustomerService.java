@@ -10,5 +10,5 @@ public interface CustomerService {
     public abstract void removeExistingCustomer(String custID);
     public abstract CustomerDTO getCustomerByID(String custID);
     public abstract List<CustomerDTO> getAllCustomers();
-    public abstract CustomerDTO updateCustomer(String custId,CustomerDTO dto);
+    public abstract String updateCustomer(String custId,CustomerDTO dto);
 }
