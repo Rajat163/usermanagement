@@ -23,14 +23,14 @@ public class CustomerServiceImpl implements CustomerService {
     private AddressServiceImpl addressService;
 
     @Override
-    public void addNewCustomer(CustomerDTO dto) {
+    public long addNewCustomer(CustomerDTO dto) {
         Customer customer = repo.save(mapper.map(dto, Customer.class));
         if (dto.getAddresses() != null) {
             dto.getAddresses().forEach(addressDTO -> {
                 addressService.addNewAddress(addressDTO,customer);
             });
         }
-
+        return customer.getId();
     }
 
 

@@ -13,7 +13,7 @@ import lombok.Data;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -21,11 +21,11 @@ public class Customer {
 	@OneToMany(mappedBy = "customer")
 	private List<Address> addresses;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

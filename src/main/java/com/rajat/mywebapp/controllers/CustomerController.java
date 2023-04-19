@@ -19,8 +19,8 @@ public class CustomerController {
 
     @PostMapping()
     public String addCustomer(@RequestBody @NotNull CustomerDTO dto) {
-        service.addNewCustomer(dto);
-        return "customer added successfully...";
+        long id = service.addNewCustomer(dto);
+        return "customer added successfully with ID: " + id;
     }
     @PutMapping()
     public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String custId) {
@@ -32,7 +32,7 @@ public class CustomerController {
         return service.getAllCustomers();
     }
 
-    @RequestMapping(params = "custId",method = RequestMethod.GET)
+    @GetMapping("customers/id")
     public CustomerDTO getCustomer(@RequestParam String custId){
         return service.getCustomerByID(custId);
     }
