@@ -24,13 +24,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public long addNewCustomer(CustomerDTO dto) {
-        Customer customer = repo.save(mapper.map(dto, Customer.class));
-        if (dto.getAddresses() != null) {
-            dto.getAddresses().forEach(addressDTO -> {
-                addressService.addNewAddress(addressDTO,customer);
-            });
+        try {
+            Customer customer = repo.save(mapper.map(dto, Customer.class));
+            if (dto.getAddresses() != null) {
+                dto.getAddresses().forEach(addressDTO -> {
+                    addressService.addNewAddress(addressDTO, customer);
+                });
+            }
+            return customer.getId();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        return customer.getId();
+
     }
 
 
@@ -59,13 +64,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String updateCustomer(String custId, CustomerDTO dto) {
-        Optional<Customer> customer = repo.findById(Integer.parseInt(custId));
-        String result = "failed";
-        if (customer != null) {
-          repo.save(mapper.map(dto, Customer.class));
-          result = "Customer Updated Successfully.....";
+        try {
+            Optional<Customer> customer = repo.findById(Integer.parseInt(custId));
+            String result = "failed";
+            if (customer.isPresent()) {
+                repo.save(mapper.map(dto, Customer.class));
+                result = "Customer Updated Successfully.....";
+            }
+            return result;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
         }
-        return result;
+
     }
 
 }
