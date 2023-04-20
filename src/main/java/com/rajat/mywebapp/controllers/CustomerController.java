@@ -19,21 +19,21 @@ public class CustomerController {
 
     @PostMapping()
     public String addCustomer(@RequestBody @NotNull CustomerDTO dto) {
-        service.addNewCustomer(dto);
-        return "customer added successfully...";
+        long id = service.addNewCustomer(dto);
+        return "customer added successfully with ID: " + id;
     }
-    @PutMapping()
-    public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String custId) {
-        service.updateCustomer(custId, dto);
-        return getCustomer(custId);
+    @PutMapping("/{id}")
+    public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String id) {
+        service.updateCustomer(id, dto);
+        return getCustomer(id);
     }
     @GetMapping()
     public List<CustomerDTO> getAllCustomers() {
         return service.getAllCustomers();
     }
 
-    @RequestMapping(params = "custId",method = RequestMethod.GET)
-    public CustomerDTO getCustomer(@RequestParam String custId){
-        return service.getCustomerByID(custId);
+    @GetMapping("/{id}")
+    public CustomerDTO getCustomer(@PathVariable String id){
+        return service.getCustomerByID(id);
     }
 }
