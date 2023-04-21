@@ -41,14 +41,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void removeExistingCustomer(String custID) {
-
+        try{
+            repo.delete(repo.findById(Integer.parseInt(custID)).orElseThrow());
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public CustomerDTO getCustomerByID(String custID) {
-        Optional<Customer> customer = repo.findById(Integer.parseInt(custID));
-        CustomerDTO dto = mapper.map(customer, CustomerDTO.class);
-        return dto;
+        try{
+            Customer customer = repo.findById(Integer.parseInt(custID)).orElseThrow();
+           return mapper.map(customer, CustomerDTO.class);
+
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @Override
