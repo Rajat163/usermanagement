@@ -1,6 +1,8 @@
 package com.rajat.mywebapp.controllers;
 
 import java.util.List;
+import java.util.UUID;
+
 import com.rajat.mywebapp.service.impl.CustomerServiceImpl;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
@@ -19,7 +21,7 @@ public class CustomerController {
 
     @PostMapping()
     public String addCustomer(@RequestBody @NotNull CustomerDTO dto) {
-        long id = service.addNewCustomer(dto);
+        UUID id = service.addNewCustomer(dto);
         return "customer added successfully with ID: " + id;
     }
     @PutMapping("/{id}")

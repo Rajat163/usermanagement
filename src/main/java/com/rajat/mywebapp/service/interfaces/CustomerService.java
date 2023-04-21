@@ -4,9 +4,11 @@ import com.rajat.mywebapp.models.dtos.CustomerDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
+
 @Service
 public interface CustomerService {
-    public abstract long addNewCustomer(CustomerDTO dto);
+    public abstract UUID addNewCustomer(CustomerDTO dto);
     public abstract void removeExistingCustomer(String custID);
     public abstract CustomerDTO getCustomerByID(String custID);
     public abstract List<CustomerDTO> getAllCustomers();

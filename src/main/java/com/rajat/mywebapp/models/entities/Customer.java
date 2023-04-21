@@ -1,10 +1,11 @@
 package com.rajat.mywebapp.models.entities;
 
 import java.util.List;
-
+import java.util.UUID;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 @Transactional
 @Entity
@@ -12,8 +13,10 @@ import lombok.Data;
 @Data
 public class Customer {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2",strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "id",length =255)
+	private UUID id;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -21,11 +24,11 @@ public class Customer {
 	@OneToMany(mappedBy = "customer")
 	private List<Address> addresses;
 
-	public long getId() {
+	public UUID getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

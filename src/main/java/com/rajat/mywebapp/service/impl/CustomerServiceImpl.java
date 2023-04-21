@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -23,7 +24,7 @@ public class CustomerServiceImpl implements CustomerService {
     private AddressServiceImpl addressService;
 
     @Override
-    public long addNewCustomer(CustomerDTO dto) {
+    public UUID addNewCustomer(CustomerDTO dto) {
         try {
             Customer customer = repo.save(mapper.map(dto, Customer.class));
             if (dto.getAddresses() != null) {
