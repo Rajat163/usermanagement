@@ -9,10 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -50,9 +47,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO getCustomerByID(String custID) {
+    public CustomerDTO getCustomerByID(UUID custID) {
         try{
-            Customer customer = repo.findById(Integer.parseInt(custID)).orElseThrow();
+            Customer customer = repo.findById(custID);
+            if(customer == null){
+                throw new NoSuchElementException();
+            }
            return mapper.map(customer, CustomerDTO.class);
 
         } catch (NumberFormatException e) {

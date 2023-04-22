@@ -16,7 +16,7 @@ public class Customer {
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2",strategy = "org.hibernate.id.UUIDGenerator")
 	@Column(name = "id",length =255)
-	private UUID id;
+	private UUID Id;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -25,11 +25,11 @@ public class Customer {
 	private List<Address> addresses;
 
 	public UUID getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(UUID id) {
-		this.id = id;
+		this.Id = id;
 	}
 
 	public String getFirstName() {

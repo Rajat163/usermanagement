@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.rajat.mywebapp.models.entities.Customer;
 
-public interface CustomerRepo extends JpaRepository<Customer, Integer>{
+import java.util.UUID;
 
+public interface CustomerRepo extends JpaRepository<Customer, Integer>{
+        public Customer findById(UUID uuid) throws RuntimeException;
 }

@@ -24,18 +24,19 @@ public class CustomerController {
         UUID id = service.addNewCustomer(dto);
         return "customer added successfully with ID: " + id;
     }
-    @PutMapping("/{id}")
+    //Temporarily disabling this functionlaity
+   /* @PutMapping("/{id}")
     public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String id) {
         service.updateCustomer(id, dto);
         return getCustomer(id);
-    }
+    }*/
     @GetMapping()
     public List<CustomerDTO> getAllCustomers() {
         return service.getAllCustomers();
     }
 
     @GetMapping("/{id}")
-    public CustomerDTO getCustomer(@PathVariable String id){
+    public CustomerDTO getCustomer(@PathVariable UUID id){
         return service.getCustomerByID(id);
     }
 }

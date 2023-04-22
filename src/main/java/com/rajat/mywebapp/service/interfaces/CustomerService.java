@@ -10,7 +10,7 @@ import java.util.UUID;
 public interface CustomerService {
     public abstract UUID addNewCustomer(CustomerDTO dto);
     public abstract void removeExistingCustomer(String custID);
-    public abstract CustomerDTO getCustomerByID(String custID);
+    public abstract CustomerDTO getCustomerByID(UUID custID);
     public abstract List<CustomerDTO> getAllCustomers();
     public abstract String updateCustomer(String custId,CustomerDTO dto);
 }
