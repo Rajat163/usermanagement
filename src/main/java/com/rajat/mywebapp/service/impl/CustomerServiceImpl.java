@@ -5,6 +5,7 @@ import com.rajat.mywebapp.models.dtos.CustomerDTO;
 import com.rajat.mywebapp.models.entities.Customer;
 import com.rajat.mywebapp.repositories.CustomerRepo;
 import com.rajat.mywebapp.service.interfaces.CustomerService;
+import com.rajat.mywebapp.utils.ApplicationUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,10 +39,10 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public void removeExistingCustomer(String custID) {
+    public void removeExistingCustomer(UUID custID) {
         try{
-            repo.delete(repo.findById(Integer.parseInt(custID)).orElseThrow());
-        } catch (NumberFormatException e) {
+            repo.delete(repo.findById(custID));
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -73,16 +74,21 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public String updateCustomer(String custId, CustomerDTO dto) {
+    public UUID updateCustomer(UUID custId, CustomerDTO dto) {
         try {
-            Optional<Customer> customer = repo.findById(Integer.parseInt(custId));
-            String result = "failed";
-            if (customer.isPresent()) {
-                repo.save(mapper.map(dto, Customer.class));
-                result = "Customer Updated Successfully.....";
+            Customer customer = repo.findById(custId);
+            if(customer == null){
+                throw  new NoSuchElementException();
             }
-            return result;
-        } catch (NumberFormatException e) {
+            else {
+                customer.setFirstName(dto.getFirstName()!= null? dto.getFirstName() : customer.getFirstName());
+                customer.setLastName(dto.getLastName()!= null? dto.getLastName() : customer.getLastName());
+                customer.setAge(dto.getAge()!= 0? dto.getAge() : customer.getAge());
+                customer.setOrders(dto.getOrders()!=0? dto.getOrders() : customer.getOrders());
+                repo.save(customer);
+                return customer.getId();
+            }
+    } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

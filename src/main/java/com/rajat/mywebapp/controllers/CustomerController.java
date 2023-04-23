@@ -24,12 +24,12 @@ public class CustomerController {
         UUID id = service.addNewCustomer(dto);
         return "customer added successfully with ID: " + id;
     }
-    //Temporarily disabling this functionlaity
-   /* @PutMapping("/{id}")
-    public  CustomerDTO updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String id) {
+
+    @PutMapping("/{id}")
+    public  String updateCustomer(@RequestBody CustomerDTO dto, @PathVariable UUID id) {
         service.updateCustomer(id, dto);
-        return getCustomer(id);
-    }*/
+        return "Customer Updated Successfully with ID: "+id;
+    }
     @GetMapping()
     public List<CustomerDTO> getAllCustomers() {
         return service.getAllCustomers();
