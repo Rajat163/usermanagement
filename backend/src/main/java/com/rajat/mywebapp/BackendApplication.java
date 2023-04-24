@@ -1,4 +1,4 @@
-package backend.src.main.java.com.rajat.mywebapp;
+package com.rajat.mywebapp;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class UsermanagementApplication {
+public class BackendApplication {
 
     @Bean
     public ModelMapper modelMapper() {
@@ -14,7 +14,7 @@ public class UsermanagementApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(UsermanagementApplication.class, args);
+        SpringApplication.run(com.rajat.mywebapp.BackendApplication.class, args);
     }
 
 }
