@@ -1,4 +1,4 @@
-package com.rajat.mywebapp;
+package backend.src.main.java.com.rajat.mywebapp;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
