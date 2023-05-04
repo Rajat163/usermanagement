@@ -1,11 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Customer() {
+  const navigate = useNavigate()
+
   const handleCreateBtnClick = () => {
     console.log("create customer is clicked....");
+    navigate("/create-customer")
   };
   const handleFindBtnClick = () => {
     console.log("Find customer is clicked....");
+    navigate("/find-customer")
   };
 
   const handleUpdateBtnClick = () => {
