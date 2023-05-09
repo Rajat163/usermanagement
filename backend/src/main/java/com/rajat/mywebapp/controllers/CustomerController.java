@@ -13,7 +13,7 @@ import com.rajat.mywebapp.models.dtos.CustomerDTO;
 
 
 @RestController
-@RequestMapping("customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
     @Autowired
     CustomerServiceImpl service;
