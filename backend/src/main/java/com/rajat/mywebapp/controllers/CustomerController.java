@@ -21,12 +21,12 @@ public class CustomerController {
 
     @PostMapping()
     public String addCustomer(@RequestBody @NotNull CustomerDTO dto) {
-        UUID id = service.addNewCustomer(dto);
+        String id = service.addNewCustomer(dto);
         return "customer added successfully with ID: " + id;
     }
 
     @PutMapping("/{id}")
-    public  String updateCustomer(@RequestBody CustomerDTO dto, @PathVariable UUID id) {
+    public  String updateCustomer(@RequestBody CustomerDTO dto, @PathVariable String id) {
         service.updateCustomer(id, dto);
         return "Customer Updated Successfully with ID: "+id;
     }
@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public CustomerDTO getCustomer(@PathVariable UUID id){
+    public CustomerDTO getCustomer(@PathVariable String id){
         return service.getCustomerByID(id);
     }
 }

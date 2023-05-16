@@ -8,9 +8,9 @@ import java.util.UUID;
 
 @Service
 public interface CustomerService {
-    public abstract UUID addNewCustomer(CustomerDTO dto);
-    public abstract void removeExistingCustomer(UUID custID);
-    public abstract CustomerDTO getCustomerByID(UUID custID);
+    public abstract String addNewCustomer(CustomerDTO dto);
+    public abstract void removeExistingCustomer(String customerID);
+    public abstract CustomerDTO getCustomerByID(String customerID);
     public abstract List<CustomerDTO> getAllCustomers();
-    public abstract UUID updateCustomer(UUID custId,CustomerDTO dto);
+    public abstract String updateCustomer(String customerId,CustomerDTO dto);
 }

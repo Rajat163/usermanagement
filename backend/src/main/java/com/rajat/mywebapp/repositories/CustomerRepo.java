@@ -7,5 +7,5 @@ import com.rajat.mywebapp.models.entities.Customer;
 import java.util.UUID;
 
 public interface CustomerRepo extends JpaRepository<Customer, Integer>{
-        public Customer findById(UUID uuid) throws RuntimeException;
+        public Customer findById(String uuid) throws RuntimeException;
 }
