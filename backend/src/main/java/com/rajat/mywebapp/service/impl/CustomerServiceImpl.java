@@ -22,7 +22,7 @@ public class CustomerServiceImpl implements CustomerService {
     private AddressServiceImpl addressService;
 
     @Override
-    public UUID addNewCustomer(CustomerDTO dto) {
+    public String addNewCustomer(CustomerDTO dto) {
         try {
             Customer customer = repo.save(mapper.map(dto, Customer.class));
             if (dto.getAddresses() != null) {
@@ -39,18 +39,18 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public void removeExistingCustomer(UUID custID) {
+    public void removeExistingCustomer(String customerID) {
         try{
-            repo.delete(repo.findById(custID));
+            repo.delete(repo.findById(customerID));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public CustomerDTO getCustomerByID(UUID custID) {
+    public CustomerDTO getCustomerByID(String customerId) {
         try{
-            Customer customer = repo.findById(custID);
+            Customer customer = repo.findById(customerId);
             if(customer == null){
                 throw new NoSuchElementException();
             }
@@ -74,9 +74,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public UUID updateCustomer(UUID custId, CustomerDTO dto) {
+    public String updateCustomer(String customerId, CustomerDTO dto) {
         try {
-            Customer customer = repo.findById(custId);
+            Customer customer = repo.findById(customerId);
             if(customer == null){
                 throw  new NoSuchElementException();
             }

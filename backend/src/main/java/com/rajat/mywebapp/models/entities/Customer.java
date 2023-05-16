@@ -5,7 +5,8 @@ import java.util.UUID;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
+
 
 @Transactional
 @Entity
@@ -13,10 +14,10 @@ import org.hibernate.annotations.GenericGenerator;
 @Data
 public class Customer {
 	@Id
-	@GeneratedValue(generator = "uuid2")
-	@GenericGenerator(name = "uuid2",strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(name = "id",length =255)
-	private UUID Id;
+	@GeneratedValue
+	@UuidGenerator()
+	@Column(name = "id", length = 128)
+	private String Id;
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -24,11 +25,11 @@ public class Customer {
 	@OneToMany(mappedBy = "customer")
 	private List<Address> addresses;
 
-	public UUID getId() {
+	public String getId() {
 		return Id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(String id) {
 		this.Id = id;
 	}
 
