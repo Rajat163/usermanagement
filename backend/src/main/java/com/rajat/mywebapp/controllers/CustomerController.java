@@ -1,7 +1,6 @@
 package com.rajat.mywebapp.controllers;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.rajat.mywebapp.service.impl.CustomerServiceImpl;
 import org.jetbrains.annotations.NotNull;
