@@ -1,7 +1,6 @@
 package com.rajat.mywebapp.models.entities;
 
 import java.util.List;
-import java.util.UUID;
 import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import lombok.Data;
