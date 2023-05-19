@@ -2,7 +2,8 @@ import React from "react";
 
 export default function CustomerFind() {
     const handleSubmit = () =>{
-        console.log('find customer')
+        let customerId = document.getElementById("customerID").value
+        console.log(`find customer with id as ${customerId}`)
     }
   return (
     <div>

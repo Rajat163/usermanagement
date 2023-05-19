@@ -15,10 +15,12 @@ export default function Customer() {
 
   const handleUpdateBtnClick = () => {
     console.log("Update customer is clicked....");
+    navigate("/update-customer")
   };
 
   const handleDeleteBtnClick = () => {
     console.log("Delete customer is clicked....");
+    navigate("/delete-customer")
   };
 
   return (
