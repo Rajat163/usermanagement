@@ -1,9 +1,12 @@
 import React from "react";
 
 export default function CustomerFind() {
-    const handleSubmit = () =>{
+     async  function handleSubmit() {
         let customerId = document.getElementById("customerID").value
         console.log(`find customer with id as ${customerId}`)
+        let url = `http://localhost:8080/api/customers/${customerId}`
+        let data = await fetch(url);
+        console.log(data.json());
     }
   return (
     <div>
@@ -18,6 +21,8 @@ export default function CustomerFind() {
           </div>
         </div>
       </form>
+
+      
     </div>
   );
 }
