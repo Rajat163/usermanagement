@@ -5,8 +5,13 @@ export default function CustomerFind() {
         let customerId = document.getElementById("customerID").value
         console.log(`find customer with id as ${customerId}`)
         let url = `http://localhost:8080/api/customers/${customerId}`
-        let data = await fetch(url);
-        console.log(data.json());
+        await fetch(url).then(response => {
+          return response.json()
+        }).then(data => {
+          console.log(data)
+        }).catch(reason => {
+          console.log('Invalid user id')
+        })
     }
   return (
     <div>
