@@ -1,17 +1,11 @@
+import { render } from "@testing-library/react";
 import React from "react";
+import CustomerShow from "./CustomerShow";
 
 export default function CustomerFind() {
      async  function handleSubmit() {
         let customerId = document.getElementById("customerID").value
-        console.log(`find customer with id as ${customerId}`)
-        let url = `http://localhost:8080/api/customers/${customerId}`
-        await fetch(url).then(response => {
-          return response.json()
-        }).then(data => {
-          console.log(data)
-        }).catch(reason => {
-          console.log('Invalid user id')
-        })
+        render(<CustomerShow id={customerId} />)
     }
   return (
     <div>
