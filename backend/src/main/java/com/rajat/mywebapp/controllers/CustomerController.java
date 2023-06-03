@@ -12,7 +12,7 @@ import com.rajat.mywebapp.models.dtos.CustomerDTO;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
     @Autowired
     CustomerServiceImpl service;
