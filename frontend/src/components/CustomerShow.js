@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function CustomerShow(props) {
-  const custId = props.id;
-  const [customer, setCustomer] = useState();
-
-  function fetchCustomer() {
-    const url = `http://localhost:8080/api/v1/customers/${custId}`;
-   fetch(url).then((response) => {
-    response.json().then((data)=>{
-      setCustomer(data)
-      console.log(customer)
-    })
-   })
-  }
-
-  useEffect(() => {
-    fetchCustomer()
-  });
+  const customer = props.customer;
+  console.log(customer);
   return (
     <div>
       <div className="modal-dialog" role="document">
@@ -28,14 +14,18 @@ export default function CustomerShow(props) {
             <button
               type="button"
               className="close"
-              data-dismiss="modal"
+              data-bs-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div className="modal-body">
-            <p>Customer Name : </p>
+            <p>
+              Customer Name : {customer.firstName} {customer.lastName}{" "}
+            </p>
+            <p>Customer Age: {customer.age}</p>
+            <p>Orders : {customer.orders}</p>
           </div>
         </div>
       </div>
